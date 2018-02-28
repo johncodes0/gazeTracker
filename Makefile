@@ -48,10 +48,10 @@ RM = /usr/local/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/jengol/Desktop/tutorial1
+CMAKE_SOURCE_DIR = /Users/jengol/Desktop/gazeTracker
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/jengol/Desktop/tutorial1
+CMAKE_BINARY_DIR = /Users/jengol/Desktop/gazeTracker
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jengol/Desktop/tutorial1/CMakeFiles /Users/jengol/Desktop/tutorial1/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jengol/Desktop/gazeTracker/CMakeFiles /Users/jengol/Desktop/gazeTracker/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jengol/Desktop/tutorial1/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/jengol/Desktop/gazeTracker/CMakeFiles 0
 .PHONY : all
 
 # The main clean target

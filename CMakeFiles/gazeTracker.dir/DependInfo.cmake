@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/jengol/Desktop/tutorial1/gazeTracker.cpp" "/Users/jengol/Desktop/tutorial1/CMakeFiles/gazeTracker.dir/gazeTracker.cpp.o"
+  "/Users/jengol/Desktop/gazeTracker/gazeTracker.cpp" "/Users/jengol/Desktop/gazeTracker/CMakeFiles/gazeTracker.dir/gazeTracker.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

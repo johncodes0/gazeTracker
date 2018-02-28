@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/Users/jengol/Desktop/tutorial1/gazeTracker.cpp
+/Users/jengol/Desktop/gazeTracker/gazeTracker.cpp
 opencv2/objdetect.hpp
-/Users/jengol/Desktop/tutorial1/opencv2/objdetect.hpp
+/Users/jengol/Desktop/gazeTracker/opencv2/objdetect.hpp
 opencv2/highgui.hpp
-/Users/jengol/Desktop/tutorial1/opencv2/highgui.hpp
+/Users/jengol/Desktop/gazeTracker/opencv2/highgui.hpp
 opencv2/imgproc.hpp
-/Users/jengol/Desktop/tutorial1/opencv2/imgproc.hpp
+/Users/jengol/Desktop/gazeTracker/opencv2/imgproc.hpp
 stdio.h
 -
 iostream

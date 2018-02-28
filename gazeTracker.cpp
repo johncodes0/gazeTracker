@@ -48,12 +48,15 @@ int main( int argc, const char** argv )
 		timePassed = (clock() - time1)/(double)CLOCKS_PER_SEC;
 		printf("time = %f\n",timePassed);
 		if (timePassed > 30){
-			printf("ALERT USER");
+			printf("ALERT USER\n");
+			time1 = clock();
 		}
 		//If there is face/eye movement, reset the timer
         if (detectAndDisplay( frame )){
+        	printf("Movement detected\n");
         	time1 = clock();
         }
+        printf("Next frame\n");
         
         if( waitKey(10) == 27 ) { break; } // escape
     }
@@ -67,9 +70,13 @@ int detectAndDisplay( Mat frame )
     Mat frame_gray;
     cvtColor( frame, frame_gray, COLOR_BGR2GRAY );
     equalizeHist( frame_gray, frame_gray );
-    //-- Detect faces
-//     printf("Detecting faces");
+    
+    //-- Detect faces 
     face_cascade.detectMultiScale( frame_gray, faces, 1.1, 2, 0|CASCADE_SCALE_IMAGE, Size(60, 60) );
+    // If no face is detected, then reset timer
+    if (faces.size() == 0){
+    	return 1;
+    }
     for ( size_t i = 0; i < faces.size(); i++ )
     {
         Point center(faces[i].x + faces[i].width/2, faces[i].y + faces[i].height/2);
@@ -92,3 +99,4 @@ int detectAndDisplay( Mat frame )
     // Face did not move
     return 0;
 }
+
