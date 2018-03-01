@@ -12,56 +12,17 @@ String face_cascade_name, eyes_cascade_name;
 CascadeClassifier face_cascade;
 CascadeClassifier eyes_cascade;
 String window_name = "Capture - Face detection";
-int main( int argc, const char** argv )
-{
-    CommandLineParser parser(argc, argv,
-        "{help h||}"
-        "{face_cascade|./haarcascade_frontalface_alt.xml|}"
-        "{eyes_cascade|./haarcascade_eye_tree_eyeglasses.xml|}");
-    parser.about( "\nThis program demonstrates using the cv::CascadeClassifier class to detect objects (Face + eyes) in a video stream.\n"
-                  "You can use Haar or LBP features.\n\n" );
-    parser.printMessage();
-    face_cascade_name = parser.get<String>("face_cascade");
-    eyes_cascade_name = parser.get<String>("eyes_cascade");
-    VideoCapture capture;
-    Mat frame;
-    //-- 1. Load the cascades
-    if( !face_cascade.load( face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
-    if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
-    //-- 2. Read the video stream
-    capture.open( 0 );
-    if ( ! capture.isOpened() ) { printf("--(!)Error opening video capture\n"); return -1; }
-    
-    // Timer 
-    clock_t time1 = clock();
-    double timePassed;
-    
-    while ( capture.read(frame) )
-    {
-        if( frame.empty() )
-        {
-            printf(" --(!) No captured frame -- Break!");
-            break;
-        }
-        //-- 3. Apply the classifier to the frame
-        printf("Displaying frame\n");
-		timePassed = (clock() - time1)/(double)CLOCKS_PER_SEC;
-		printf("time = %f\n",timePassed);
-		if (timePassed > 30){
-			printf("ALERT USER\n");
-			time1 = clock();
-		}
-		//If there is face/eye movement, reset the timer
-        if (detectAndDisplay( frame )){
-        	printf("Movement detected\n");
-        	time1 = clock();
-        }
-        printf("Next frame\n");
-        
-        if( waitKey(10) == 27 ) { break; } // escape
-    }
-    return 0;
+
+bool isInHypnosis(int timePassed, clock_t currentTime){
+
+	if(timePassed > 30){
+		currentTime = clock();
+		return true;
+	} 
+	return false;	
 }
+
+void alertSystem(){};
 
 // returns 1 if the face/eyes has moved, 0 otherwise
 int detectAndDisplay( Mat frame )
@@ -99,4 +60,63 @@ int detectAndDisplay( Mat frame )
     // Face did not move
     return 0;
 }
+
+int main( int argc, const char** argv )
+{
+    CommandLineParser parser(argc, argv,
+        "{help h||}"
+        "{face_cascade|./haarcascade_frontalface_alt.xml|}"
+        "{eyes_cascade|./haarcascade_eye_tree_eyeglasses.xml|}");
+    parser.about( "\nThis program demonstrates using the cv::CascadeClassifier class to detect objects (Face + eyes) in a video stream.\n"
+                  "You can use Haar or LBP features.\n\n" );
+    parser.printMessage();
+    face_cascade_name = parser.get<String>("face_cascade");
+    eyes_cascade_name = parser.get<String>("eyes_cascade");
+    VideoCapture capture;
+    Mat frame;
+    //-- 1. Load the cascades
+    if( !face_cascade.load( face_cascade_name ) ){ printf("--(!)Error loading face cascade\n"); return -1; };
+    if( !eyes_cascade.load( eyes_cascade_name ) ){ printf("--(!)Error loading eyes cascade\n"); return -1; };
+    //-- 2. Read the video stream
+    capture.open( 0 );
+    if ( ! capture.isOpened() ) { printf("--(!)Error opening video capture\n"); return -1; }
+    
+    // Timer 
+    clock_t time1 = clock();
+    double timePassed;
+    
+    // Continuously check frames from feed
+    while ( capture.read(frame) )
+    {
+        if( frame.empty() )
+        {
+            printf(" --(!) No captured frame -- Break!");
+            break;
+        }
+        //-- 3. Apply the classifier to the frame
+        printf("Displaying frame\n");
+        
+        // Display elapsed time in gaze
+		timePassed = (clock() - time1)/(double)CLOCKS_PER_SEC;
+		printf("time = %f\n",timePassed);
+		
+		// Condition to check if the driver is in hypnosis
+		// Alert driver
+		if(isInHypnosis(timePassed,time1)){
+			alertSystem();
+		}
+		
+		// Analayze frame.
+		// If there is face/eye movement, reset the timer
+        if (detectAndDisplay( frame )){
+        	printf("Movement detected\n");
+        	time1 = clock();
+        }
+        
+        if( waitKey(10) == 27 ) { break; } // escape
+    }
+    return 0;
+}
+
+
 
