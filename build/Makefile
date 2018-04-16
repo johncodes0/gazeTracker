@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/ariy/Capstone
+CMAKE_SOURCE_DIR = /home/ariy/Capstone/gazeTracker/build
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/ariy/Capstone/gazeTracker
+CMAKE_BINARY_DIR = /home/ariy/Capstone/gazeTracker/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariy/Capstone/gazeTracker/CMakeFiles /home/ariy/Capstone/gazeTracker/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariy/Capstone/gazeTracker/build/CMakeFiles /home/ariy/Capstone/gazeTracker/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariy/Capstone/gazeTracker/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/ariy/Capstone/gazeTracker/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -123,33 +123,6 @@ gazeTracker/fast:
 	$(MAKE) -f CMakeFiles/gazeTracker.dir/build.make CMakeFiles/gazeTracker.dir/build
 .PHONY : gazeTracker/fast
 
-gazeTracker.o: gazeTracker.cpp.o
-
-.PHONY : gazeTracker.o
-
-# target to build an object file
-gazeTracker.cpp.o:
-	$(MAKE) -f CMakeFiles/gazeTracker.dir/build.make CMakeFiles/gazeTracker.dir/gazeTracker.cpp.o
-.PHONY : gazeTracker.cpp.o
-
-gazeTracker.i: gazeTracker.cpp.i
-
-.PHONY : gazeTracker.i
-
-# target to preprocess a source file
-gazeTracker.cpp.i:
-	$(MAKE) -f CMakeFiles/gazeTracker.dir/build.make CMakeFiles/gazeTracker.dir/gazeTracker.cpp.i
-.PHONY : gazeTracker.cpp.i
-
-gazeTracker.s: gazeTracker.cpp.s
-
-.PHONY : gazeTracker.s
-
-# target to generate assembly for a file
-gazeTracker.cpp.s:
-	$(MAKE) -f CMakeFiles/gazeTracker.dir/build.make CMakeFiles/gazeTracker.dir/gazeTracker.cpp.s
-.PHONY : gazeTracker.cpp.s
-
 # Help Target
 help:
 	@echo "The following are some of the valid targets for this Makefile:"
@@ -159,9 +132,6 @@ help:
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... gazeTracker"
-	@echo "... gazeTracker.o"
-	@echo "... gazeTracker.i"
-	@echo "... gazeTracker.s"
 .PHONY : help
 
 

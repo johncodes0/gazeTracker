@@ -1,4 +1,4 @@
-# Install script for directory: /home/ariy/Capstone
+# Install script for directory: /home/ariy/Capstone/gazeTracker/build
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -40,5 +40,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/home/ariy/Capstone/gazeTracker/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/home/ariy/Capstone/gazeTracker/build/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")
