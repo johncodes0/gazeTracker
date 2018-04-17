@@ -12,13 +12,16 @@
 
 std::string file = "trimalarm.wav";
 std::string command = "aplay " + file;
+std::string facefile = "face.wav"; 
+std::string command1 = "aplay " + facefile; 
 #if defined (_APPLE_) && (_MACH_)
     command = "afplay " + file;
 #endif
 #if defined (_linux_)
     command = "aplay " + file;
 #endif
-time_t start;
+time_t start; // sleeping eyes
+time_t face; // face detection 
 
 cv::Vec3f getEyeball(cv::Mat &eye, std::vector<cv::Vec3f> &circles)
 {
@@ -121,9 +124,13 @@ void detectface(cv::Mat &frame, cv::CascadeClassifier &faceCascade, cv::CascadeC
     std::vector<cv::Rect> faces;
     faceCascade.detectMultiScale(grayscale, faces, 1.1, 1, 0 | CV_HAAR_SCALE_IMAGE, cv::Size(150, 150));
     if (faces.size() == 0) {
+      
         
         return; // none face was detected
     }
+    else { 
+      face = time(0); 
+      }
     
     cv::Mat face = grayscale(faces[0]); // crop the face to the matrix within the rectangle of face 0
     
@@ -147,8 +154,7 @@ void detectface(cv::Mat &frame, cv::CascadeClassifier &faceCascade, cv::CascadeC
         return; // both eyes were not detected
     }
     else {
-            start = time(0); 
-            printf("\n Time: ");
+            //start = time(0); 
     }
     noFaceCounter = 0;
     
@@ -195,6 +201,7 @@ void detectface(cv::Mat &frame, cv::CascadeClassifier &faceCascade, cv::CascadeC
         int radiusLeft = (int)eyeballLeft[2];
         cv::circle(frame, faces[0].tl() + eyeLeftRect.tl() + centerLeft, radiusLeft, cv::Scalar(0, 0, 255), 2);
         cv::circle(eyeLeft, centerLeft, radiusLeft, cv::Scalar(255, 255, 255), 2);
+        start = time(0);
     }
     if (circlesRight.size() > 0)
     {
@@ -212,7 +219,9 @@ void detectface(cv::Mat &frame, cv::CascadeClassifier &faceCascade, cv::CascadeC
         int radiusRight = (int)eyeballRight[2];
         cv::circle(frame, faces[0].tl() + eyeRightRect.tl() + centerRight, radiusRight, cv::Scalar(0, 0, 255), 2);
         cv::circle(eyeRight, centerRight, radiusRight, cv::Scalar(255, 255, 255), 2);
+        start = time(0);
     }
+
     cv::imshow("EyeLeft", eyeLeft);
     cv::imshow("EyeRight",eyeRight);
 }
@@ -220,6 +229,7 @@ void detectface(cv::Mat &frame, cv::CascadeClassifier &faceCascade, cv::CascadeC
 void *trackingsystem(void *no)
 {
   start = 0;
+  face = 0; 
   cv::CascadeClassifier faceCascade;
   cv::CascadeClassifier eyeCascade;
   if (!faceCascade.load("./haarcascade_frontalface_alt.xml"))
@@ -255,12 +265,17 @@ void *alertsystem(void *no)
   int sec = 1; 
   while(1)
   {
-  double seconds_since_start = difftime(time(0), start);
-  if (seconds_since_start  > 10){
-            system(command.c_str());
-            printf("\n WAKE UP BITCH");
+    double eye = difftime(time(0), start);
+    double warning = difftime(time(0),face); 
+  if ( eye  > 9){
+      system(command.c_str());
+      printf("\n WAKE UP");
 
-        }
+  }
+  else if (warning > 2 && warning < 8){
+    system(command1.c_str());
+    printf("\n Can't find face");
+  }
   }
 }
 void changetime(){ 
