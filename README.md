@@ -1,9 +1,9 @@
 CMake and OpenCV is required.
 
-To compile:
+To compile and run the program, use the script:
 
-cmake .
-make
-./gazeTracker
+sh run.sh
 
+Make sure to clean directory:
 
+sh clean.sh
