@@ -1,4 +1,4 @@
-#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
 
 #IncludeRegexScan: ^.*$
 
@@ -6,16 +6,26 @@
 
 #IncludeRegexTransform: 
 
-/Users/jengol/Desktop/gazeTracker/gazeTracker.cpp
-opencv2/objdetect.hpp
-/Users/jengol/Desktop/gazeTracker/opencv2/objdetect.hpp
-opencv2/highgui.hpp
-/Users/jengol/Desktop/gazeTracker/opencv2/highgui.hpp
-opencv2/imgproc.hpp
-/Users/jengol/Desktop/gazeTracker/opencv2/imgproc.hpp
+/home/ariy/Capstone/gazeTracker/gazeTracker.cpp
+iostream
+-
+opencv2/core/core.hpp
+-
+opencv2/highgui/highgui.hpp
+-
+opencv2/imgproc/imgproc.hpp
+-
+opencv2/objdetect/objdetect.hpp
+-
+pthread.h
+-
+atomic
+-
 stdio.h
 -
-iostream
+time.h
+-
+unistd.h
 -
 
 /usr/local/include/opencv/cxcore.h
@@ -87,10 +97,12 @@ opencv2/core/cvstd.hpp
 /usr/local/include/opencv2/core/opencv2/core/cvstd.hpp
 opencv2/core/neon_utils.hpp
 /usr/local/include/opencv2/core/opencv2/core/neon_utils.hpp
-opencv2/core/vsx_utils.hpp
-/usr/local/include/opencv2/core/opencv2/core/vsx_utils.hpp
 
 /usr/local/include/opencv2/core/bufferpool.hpp
+
+/usr/local/include/opencv2/core/core.hpp
+opencv2/core.hpp
+/usr/local/include/opencv2/core/opencv2/core.hpp
 
 /usr/local/include/opencv2/core/core_c.h
 opencv2/core/types_c.h
@@ -116,11 +128,11 @@ opencv2/core/cuda.hpp
 
 /usr/local/include/opencv2/core/cuda_types.hpp
 
-/usr/local/include/opencv2/core/cv_cpu_dispatch.h
-cv_cpu_config.h
-/usr/local/include/opencv2/core/cv_cpu_config.h
-cv_cpu_helper.h
-/usr/local/include/opencv2/core/cv_cpu_helper.h
+/usr/local/include/opencv2/core/cvdef.h
+limits.h
+-
+opencv2/core/hal/interface.h
+/usr/local/include/opencv2/core/opencv2/core/hal/interface.h
 emmintrin.h
 -
 pmmintrin.h
@@ -137,10 +149,6 @@ popcntintrin.h
 -
 immintrin.h
 -
-arm_neon.h
--
-immintrin.h
--
 immintrin.h
 -
 Intrin.h
@@ -149,35 +157,7 @@ arm_neon.h
 -
 arm_neon.h
 -
-arm_neon.h
--
-altivec.h
--
-emmintrin.h
--
-Intrin.h
--
-arm_neon.h
--
-arm_neon.h
--
-altivec.h
--
-
-/usr/local/include/opencv2/core/cv_cpu_helper.h
-
-/usr/local/include/opencv2/core/cvdef.h
-cvconfig.h
-/usr/local/include/opencv2/core/cvconfig.h
-limits.h
--
-opencv2/core/hal/interface.h
-/usr/local/include/opencv2/core/opencv2/core/hal/interface.h
-cv_cpu_dispatch.h
-/usr/local/include/opencv2/core/cv_cpu_dispatch.h
 intrin.h
--
-array
 -
 
 /usr/local/include/opencv2/core/cvstd.hpp
@@ -211,11 +191,9 @@ ostream
 /usr/local/include/opencv2/core/fast_math.hpp
 opencv2/core/cvdef.h
 /usr/local/include/opencv2/core/opencv2/core/cvdef.h
-emmintrin.h
+fastmath.h
 -
 cmath
--
-fastmath.h
 -
 math.h
 -
@@ -241,8 +219,6 @@ opencv2/core/types.hpp
 /usr/local/include/opencv2/core/opencv2/core/types.hpp
 opencv2/core/bufferpool.hpp
 /usr/local/include/opencv2/core/opencv2/core/bufferpool.hpp
-type_traits
--
 opencv2/core/mat.inl.hpp
 /usr/local/include/opencv2/core/opencv2/core/mat.inl.hpp
 
@@ -257,8 +233,6 @@ opencv2/core/traits.hpp
 /usr/local/include/opencv2/core/opencv2/core/traits.hpp
 opencv2/core/saturate.hpp
 /usr/local/include/opencv2/core/opencv2/core/saturate.hpp
-initializer_list
--
 
 /usr/local/include/opencv2/core/neon_utils.hpp
 opencv2/core/cvdef.h
@@ -337,22 +311,12 @@ opencv2/core.hpp
 /usr/local/include/opencv2/core/utility.hpp
 opencv2/core.hpp
 /usr/local/include/opencv2/core/opencv2/core.hpp
-ostream
--
-functional
--
 opencv2/core/core_c.h
 /usr/local/include/opencv2/core/opencv2/core/core_c.h
 
 /usr/local/include/opencv2/core/version.hpp
 
-/usr/local/include/opencv2/core/vsx_utils.hpp
-opencv2/core/cvdef.h
-/usr/local/include/opencv2/core/opencv2/core/cvdef.h
-
 /usr/local/include/opencv2/features2d.hpp
-opencv2/opencv_modules.hpp
-/usr/local/include/opencv2/opencv2/opencv_modules.hpp
 opencv2/core.hpp
 /usr/local/include/opencv2/opencv2/core.hpp
 opencv2/flann/miniflann.hpp
@@ -405,8 +369,6 @@ typeinfo
 -
 
 /usr/local/include/opencv2/flann/autotuned_index.h
-sstream
--
 general.h
 /usr/local/include/opencv2/flann/general.h
 nn_index.h
@@ -794,6 +756,10 @@ opencv2/videoio.hpp
 opencv2/highgui/highgui_c.h
 /usr/local/include/opencv2/opencv2/highgui/highgui_c.h
 
+/usr/local/include/opencv2/highgui/highgui.hpp
+opencv2/highgui.hpp
+/usr/local/include/opencv2/highgui/opencv2/highgui.hpp
+
 /usr/local/include/opencv2/highgui/highgui_c.h
 opencv2/core/core_c.h
 /usr/local/include/opencv2/highgui/opencv2/core/core_c.h
@@ -848,6 +814,10 @@ opencv2/highgui.hpp
 opencv2/imgproc/imgproc_c.h
 /usr/local/include/opencv2/opencv2/imgproc/imgproc_c.h
 
+/usr/local/include/opencv2/imgproc/imgproc.hpp
+opencv2/imgproc.hpp
+/usr/local/include/opencv2/imgproc/opencv2/imgproc.hpp
+
 /usr/local/include/opencv2/imgproc/imgproc_c.h
 opencv2/imgproc/types_c.h
 /usr/local/include/opencv2/imgproc/opencv2/imgproc/types_c.h
@@ -865,10 +835,6 @@ map
 -
 iostream
 -
-opencv2/ml/ml.inl.hpp
--
-
-/usr/local/include/opencv2/ml/ml.inl.hpp
 
 /usr/local/include/opencv2/objdetect.hpp
 opencv2/core.hpp
@@ -879,10 +845,12 @@ opencv2/objdetect/objdetect_c.h
 /usr/local/include/opencv2/opencv2/objdetect/objdetect_c.h
 
 /usr/local/include/opencv2/objdetect/detection_based_tracker.hpp
-opencv2/core.hpp
--
 vector
 -
+
+/usr/local/include/opencv2/objdetect/objdetect.hpp
+opencv2/objdetect.hpp
+/usr/local/include/opencv2/objdetect/opencv2/objdetect.hpp
 
 /usr/local/include/opencv2/objdetect/objdetect_c.h
 opencv2/core/core_c.h
@@ -1284,17 +1252,41 @@ opencv2/videostab/global_motion.hpp
 opencv2/videostab/log.hpp
 /usr/local/include/opencv2/videostab/opencv2/videostab/log.hpp
 
-/usr/local/include/opencv2/xfeatures2d.hpp
-opencv2/features2d.hpp
-/usr/local/include/opencv2/opencv2/features2d.hpp
-opencv2/xfeatures2d/nonfree.hpp
-/usr/local/include/opencv2/opencv2/xfeatures2d/nonfree.hpp
+/usr/local/include/opencv2/viz.hpp
+opencv2/viz/types.hpp
+-
+opencv2/viz/widgets.hpp
+-
+opencv2/viz/viz3d.hpp
+-
+opencv2/viz/vizcore.hpp
+-
 
-/usr/local/include/opencv2/xfeatures2d/cuda.hpp
-opencv2/core/cuda.hpp
-/usr/local/include/opencv2/xfeatures2d/opencv2/core/cuda.hpp
+/usr/local/include/opencv2/viz/types.hpp
+string
+-
+opencv2/core.hpp
+-
+opencv2/core/affine.hpp
+-
 
-/usr/local/include/opencv2/xfeatures2d/nonfree.hpp
-opencv2/features2d.hpp
-/usr/local/include/opencv2/xfeatures2d/opencv2/features2d.hpp
+/usr/local/include/opencv2/viz/viz3d.hpp
+opencv2/core.hpp
+-
+opencv2/viz/types.hpp
+-
+opencv2/viz/widgets.hpp
+-
+
+/usr/local/include/opencv2/viz/vizcore.hpp
+opencv2/viz/types.hpp
+-
+opencv2/viz/widgets.hpp
+-
+opencv2/viz/viz3d.hpp
+-
+
+/usr/local/include/opencv2/viz/widgets.hpp
+opencv2/viz/types.hpp
+-
 

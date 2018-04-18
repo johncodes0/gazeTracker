@@ -1,0 +1,3 @@
+/home/ariy/Capstone/gazeTracker/build/CMakeFiles/rebuild_cache.dir
+/home/ariy/Capstone/gazeTracker/build/CMakeFiles/edit_cache.dir
+/home/ariy/Capstone/gazeTracker/build/CMakeFiles/gazeTracker.dir

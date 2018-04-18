@@ -1,3 +1,3 @@
-/Users/jengol/Desktop/gazeTracker/CMakeFiles/rebuild_cache.dir
-/Users/jengol/Desktop/gazeTracker/CMakeFiles/edit_cache.dir
-/Users/jengol/Desktop/gazeTracker/CMakeFiles/gazeTracker.dir
+/home/ariy/Capstone/gazeTracker/CMakeFiles/rebuild_cache.dir
+/home/ariy/Capstone/gazeTracker/CMakeFiles/edit_cache.dir
+/home/ariy/Capstone/gazeTracker/CMakeFiles/gazeTracker.dir
